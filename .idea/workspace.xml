@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f1825741-d63a-4d9a-936c-489fafb54805" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EMVToolApp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ipk_cert_files/MC/522230-000001.cEF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ipk_cert_files/UPI/009390.I0B" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ipk_cert_files/UPI/016510.I04" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ipk_cert_files/VISA/960097.I94" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/CardSchemeBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/CardSchemes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/IPKCert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/MasterCardCardScheme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/MasterCardCertificateData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/MasterCardUnsignedData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/UpiCardScheme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/UpiCertificateData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/UpiDetachedSignature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/UpiUnsignedData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/VisaCardScheme.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/VisaCertificateData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/VisaDetachedSignature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dzt/smartcps/certificate/VisaUnsignedData.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2bLaAPf25srOHyTtGTKJSAEMRUC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/DzSOLUTION/Java Projects/EMVToolApp",
+    "settings.editor.selected.configurable": "Errors"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DzSOLUTION\Java Projects\EMVToolApp" />
+      <recent name="D:\DzSOLUTION\Java Projects\EMVToolApp\src" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-1.8.0_402-corretto-1.8.0_402-4caba194b151-ae57be32" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1825741-d63a-4d9a-936c-489fafb54805" name="Changes" comment="" />
+      <created>1705996671285</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705996671285</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dzt/smartcps/certificate/VisaCardScheme.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
+    <option name="sizePresets">
+      <list>
+        <SizePreset>
+          <option name="caption" value="Phone" />
+          <option name="height" value="568" />
+          <option name="width" value="320" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Tablet" />
+          <option name="height" value="1024" />
+          <option name="width" value="768" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Desktop" />
+          <option name="height" value="900" />
+          <option name="width" value="1440" />
+        </SizePreset>
+      </list>
+    </option>
+  </component>
+</project>
