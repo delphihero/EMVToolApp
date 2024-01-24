@@ -3,7 +3,7 @@ package dzt.smartcps.certificate;
 public class UpiUnsignedData {
 	byte header;
     byte[] serviceIdentifier;
-    byte[] issuerIdentificationNumber;
+    byte[] issuerIdentifier;
     byte[] certificateSerialNumber;
     byte[] certificateExpirationDate;
     byte issuerPublicKeyModulusRemainderLength;

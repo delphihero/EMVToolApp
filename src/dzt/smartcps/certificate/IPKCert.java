@@ -11,13 +11,24 @@ public class IPKCert {
     private final String certificateFilePath;
     private final byte[] certificateData;
     private String errorMessage;
-
+    CardSchemeBase card;
     public IPKCert(CardSchemes cardScheme, String certificateFilePath) {
-        try {
-            CardSchemes.valueOf(cardScheme.name());
-        } catch (IllegalArgumentException | NullPointerException e) {
-            throw new IllegalArgumentException("Invalid card scheme");
+
+        CardSchemes.valueOf(cardScheme.name());
+        switch (cardScheme) {
+            case VISA:
+                card = new VisaCardScheme();
+                break;
+            case MASTERCARD:
+                card = new MasterCardCardScheme();
+                break;
+            case UPI:
+                card = new UpiCardScheme();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid card scheme");
         }
+
         this.certCardScheme = cardScheme;
         this.certificateFilePath = certificateFilePath;
         this.certificateData = readCertificate();
@@ -40,25 +51,13 @@ public class IPKCert {
         System.out.println("Certificate Data: " + bytesToHex(certificateData));
     }
 
+    public String getCaPublicKeyIndex() {
+        return card.getCaPublicKeyIndex(certificateData).toUpperCase();
+    }
+
     public boolean validate(String caPkModulusN, String caPkExponentE) {
         try {
             System.out.println("Recovered using CA Public Key: " + caPkModulusN);
-
-            CardSchemeBase card;
-            switch (certCardScheme) {
-                case VISA:
-                    card = new VisaCardScheme();
-                    break;
-                case MASTERCARD:
-                    card = new MasterCardCardScheme();
-                    break;
-                case UPI:
-                    card = new UpiCardScheme();
-                    break;
-                default:
-                    return false;
-            }
-
             boolean result = card.recoverIpkCert(caPkModulusN, caPkExponentE, certificateData);
             if (!result) {
                 errorMessage = card.getErrorMessage();

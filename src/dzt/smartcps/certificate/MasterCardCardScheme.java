@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class MasterCardCardScheme extends CardSchemeBase {
 	MasterCardUnsignedData unsignedData = new MasterCardUnsignedData();
     MasterCardCertificateData certificateData = new MasterCardCertificateData();
-    String errorMessage;
+
 
     byte[] readUnsignedData(byte[] ipkCertData, int caPkModulusNLength) {
         try {
@@ -18,12 +18,28 @@ public class MasterCardCardScheme extends CardSchemeBase {
             } else {
                 unsignedDataBuffer = Arrays.copyOfRange(ipkCertData, 0, ipkCertDataLength - caPkModulusNLength);
             }
+            int offset = 0;  // Starting offset
+            unsignedData.issuerIdentificationNumber = Arrays.copyOfRange(ipkCertData, offset, offset + 4);
+            offset += 4;
+
+            unsignedData.issuerPublicKeyIndex = Arrays.copyOfRange(ipkCertData, offset, offset + 3);
+            offset += 3;
+
+            unsignedData.caPublicKeyIndex = Arrays.copyOfRange(ipkCertData, offset, offset + 1)[0];
+
+            //caPublicKeyIndex = String.format("%02x", unsignedData.caPublicKeyIndex & 0xFF);
 
             return unsignedDataBuffer;
 
         } catch (Exception e) {
             throw new IllegalArgumentException("Error reading UPI unsigned data: " + e.getMessage(), e);
         }
+    }
+
+
+    @Override
+    public String getCaPublicKeyIndex(byte[] ipkCertData) {
+        return String.format("%02x", ipkCertData[7] & 0xFF);
     }
 
     @Override

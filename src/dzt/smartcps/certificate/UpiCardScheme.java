@@ -7,65 +7,61 @@ public class UpiCardScheme extends CardSchemeBase {
 	UpiUnsignedData unsignedData = new UpiUnsignedData();
     UpiCertificateData certificateData = new UpiCertificateData();
     UpiDetachedSignature detachedSignature = new UpiDetachedSignature();
-    String errorMessage;
+
 
     byte[] readUnsignedData(byte[] ipkCertData) {
         try {
-            byte[] unsignedDataBuffer;
             int offset = 0;  // Starting offset
 
-            byte header = ipkCertData[offset];
+            unsignedData.header = ipkCertData[offset];
             offset += 1;
-            unsignedData.header = header;
 
             unsignedData.serviceIdentifier = Arrays.copyOfRange(ipkCertData, offset, offset + 4);
             offset += 4;
 
-            byte[] issuerIdentificationNumber = Arrays.copyOfRange(ipkCertData, offset, offset + 4);
+            unsignedData.issuerIdentifier = Arrays.copyOfRange(ipkCertData, offset, offset + 4);
             offset += 4;
-            unsignedData.issuerIdentificationNumber = issuerIdentificationNumber;
 
-            byte[] certificateSerialNumber = Arrays.copyOfRange(ipkCertData, offset, offset + 3);
+            unsignedData.certificateSerialNumber = Arrays.copyOfRange(ipkCertData, offset, offset + 3);
             offset += 3;
-            unsignedData.certificateSerialNumber = certificateSerialNumber;
 
-            byte[] certificateExpirationDate = Arrays.copyOfRange(ipkCertData, offset, offset + 2);
+            unsignedData.certificateExpirationDate = Arrays.copyOfRange(ipkCertData, offset, offset + 2);
             offset += 2;
-            unsignedData.certificateExpirationDate = certificateExpirationDate;
 
-            byte issuerPublicKeyModulusRemainderLength = ipkCertData[offset];
+            unsignedData.issuerPublicKeyModulusRemainderLength = ipkCertData[offset];
             offset += 1;
-            unsignedData.issuerPublicKeyModulusRemainderLength = issuerPublicKeyModulusRemainderLength;
 
-            int len = new BigInteger(new byte[]{issuerPublicKeyModulusRemainderLength}).intValue();
+            int len = unsignedData.issuerPublicKeyModulusRemainderLength & 0xFF;  // Convert to unsigned
             if (len > 0) {
-                byte[] issuerPublicKeyModulusNRemainder = Arrays.copyOfRange(ipkCertData, offset, offset + len);
+                unsignedData.issuerPublicKeyModulusNRemainder = Arrays.copyOfRange(ipkCertData, offset, offset + len);
                 offset += len;
-                unsignedData.issuerPublicKeyModulusNRemainder = issuerPublicKeyModulusNRemainder;
             }
 
-            byte issuerPublicKeyExponentLength = ipkCertData[offset];
+            unsignedData.issuerPublicKeyExponentLength = ipkCertData[offset];
             offset += 1;
-            unsignedData.issuerPublicKeyExponentLength = issuerPublicKeyExponentLength;
 
-            len = new BigInteger(new byte[]{issuerPublicKeyExponentLength}).intValue();
+            len = unsignedData.issuerPublicKeyExponentLength & 0xFF;  // Convert to unsigned
             if (len > 0) {
-                byte[] issuerPublicKeyExponent = Arrays.copyOfRange(ipkCertData, offset, offset + len);
+                unsignedData.issuerPublicKeyExponent = Arrays.copyOfRange(ipkCertData, offset, offset + len);
                 offset += len;
-                unsignedData.issuerPublicKeyExponent = issuerPublicKeyExponent;
             }
 
-            byte caPublicKeyIndex = ipkCertData[offset];
+            unsignedData.caPublicKeyIndex = ipkCertData[offset];
             offset += 1;
-            unsignedData.caPublicKeyIndex = caPublicKeyIndex;
 
-            unsignedDataBuffer = Arrays.copyOfRange(ipkCertData, 0, offset);
+            //caPublicKeyIndex = String.format("%02x", unsignedData.caPublicKeyIndex & 0xFF);
 
-            return unsignedDataBuffer;
+            return Arrays.copyOfRange(ipkCertData, 0, offset);
 
         } catch (Exception e) {
-            throw new IllegalArgumentException("Error reading unsigned data: " + e.getMessage(), e);
+            throw new IllegalArgumentException("Error reading VISA unsigned data: " + e.getMessage(), e);
         }
+    }
+
+    @Override
+    public String getCaPublicKeyIndex(byte[] ipkCertData) {
+        readUnsignedData(ipkCertData);
+        return String.format("%02x", unsignedData.caPublicKeyIndex & 0xFF);
     }
 
     @Override

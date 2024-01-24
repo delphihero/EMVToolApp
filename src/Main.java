@@ -16,7 +16,7 @@ public class Main {
 
 
         // Creating an instance of IPKCert with a valid card scheme
-        CardSchemes selCardScheme = CardSchemes.UPI;
+        CardSchemes selCardScheme = CardSchemes.MASTERCARD;
         IPKCert cert;
         String caPkModulusN;
         switch (selCardScheme) {
@@ -42,6 +42,8 @@ public class Main {
         // Displaying information using the displayInfo method
         cert.displayInfo();
 
+        String idx = cert.getCaPublicKeyIndex();
+        System.out.println("CA PK Index: " + idx);
         // Example of using the validate method
         String caPkExponentE = "03";
         boolean recoveryResult = cert.validate(caPkModulusN, caPkExponentE);

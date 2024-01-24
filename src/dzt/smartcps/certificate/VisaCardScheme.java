@@ -27,6 +27,7 @@ public class VisaCardScheme extends CardSchemeBase {
         }
         return data;
     }
+
     byte[] readUnsignedData(byte[] ipkCertData) {
         try {
             int offset = 0;  // Starting offset
@@ -67,14 +68,23 @@ public class VisaCardScheme extends CardSchemeBase {
             unsignedData.caPublicKeyIndex = ipkCertData[offset];
             offset += 1;
 
-            return Arrays.copyOfRange(ipkCertData, 0, offset);
+            //caPublicKeyIndex = String.format("%02x", unsignedData.caPublicKeyIndex & 0xFF);
+
+        return Arrays.copyOfRange(ipkCertData, 0, offset);
 
         } catch (Exception e) {
             throw new IllegalArgumentException("Error reading VISA unsigned data: " + e.getMessage(), e);
         }
     }
-    
-	@Override
+
+
+    @Override
+    public String getCaPublicKeyIndex(byte[] ipkCertData) {
+        readUnsignedData(ipkCertData);
+        return String.format("%02x", unsignedData.caPublicKeyIndex & 0xFF);
+    }
+
+    @Override
     public boolean recoverIpkCert(String caPkModulusN, String caPkExponentE, byte[] ipkCertData) {
         try {
             BigInteger n = new BigInteger(caPkModulusN, 16);
